@@ -71,11 +71,12 @@ const props = withDefaults(defineProps<Props>(), {
 .variant_primary {
     color: #ffffff;
     background-color: #088be8;
-    border-color: #077bc9;
-    box-shadow: #055a92 0px 4px 0px;
+    border-color: #1176b9;
+    box-shadow: #006eb6 0px 4px 0px;
 }
 .variant_primary:hover {
     background-color: #077bc9;
+    box-shadow: #115a8a 0px 4px 0px;
 }
 
 /* 3. Secondary (Stone/Dark) */

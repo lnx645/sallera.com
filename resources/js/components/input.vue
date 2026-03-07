@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 defineProps<{
     label: string;
     modelValue: string;
@@ -14,7 +13,12 @@ defineEmits(['update:modelValue']);
         <input
             :type="type || 'text'"
             :value="modelValue"
-            @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+            @input="
+                $emit(
+                    'update:modelValue',
+                    ($event.target as HTMLInputElement).value,
+                )
+            "
             :class="$style.input_field"
             placeholder=" "
             autocomplete="off"
@@ -23,26 +27,27 @@ defineEmits(['update:modelValue']);
     </div>
 </template>
 
-<style  module>
+<style module>
 .input_container {
     position: relative;
     width: 100%;
     background-color: #ffffff;
 }
 
-
 .input_field {
     width: 100%;
     padding: 22px 16px 10px 16px;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 16px;
     color: #374151; /* stone-800 */
     border: 1px solid #d1d5db; /* stone-300 */
     border-radius: 12px;
     background: transparent;
     outline: none;
     box-sizing: border-box;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .input_field:focus {
@@ -81,7 +86,7 @@ defineEmits(['update:modelValue']);
 }
 
 .input_field:-webkit-autofill,
-.input_field:-webkit-autofill:hover, 
+.input_field:-webkit-autofill:hover,
 .input_field:-webkit-autofill:focus {
     -webkit-text-fill-color: #374151; /* Warna teks sesuai desain kamu */
     -webkit-box-shadow: 0 0 0px 1000px white inset; /* Memaksa background tetap putih */

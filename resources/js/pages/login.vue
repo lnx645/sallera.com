@@ -14,8 +14,8 @@ const handleLogin = () => {
 </script>
 
 <template>
-    <div class="min-h-screen flex items-center justify-center bg-stone-50">
-        <div class="w-full max-w-sm rounded-2xl bg-white p-8 shadow-xl shadow-stone-200/50 border border-stone-100">
+    <div class="min-h-screen  flex items-center justify-center bg-stone-50">
+        <div class="w-full max-w-sm rounded-2xl shadow-[0px_4px_0px] bg-white p-8 shadow-stone-200/50 border border-stone-100">
             
             <div class="mb-8 text-center">
                 <h3 class="text-2xl font-black tracking-tight text-stone-800">
@@ -39,7 +39,7 @@ const handleLogin = () => {
 
                 <div class="pt-2">
                     <Button 
-                        variant="success" 
+                        variant="primary" 
                         @click="handleLogin"
                     >
                         Masuk Sekarang
