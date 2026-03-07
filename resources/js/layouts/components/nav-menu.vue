@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import IconArrowDown from '@/icons/icon-arrow-down.vue';
 import { Link } from '@inertiajs/vue3';
-import { ref, computed, useCssModule } from 'vue';
-
+import { ref, computed, useCssModule, useTemplateRef } from 'vue';
+import { Icon } from '@iconify/vue';
+import { onClickOutside } from '@vueuse/core';
+import { AnimatePresence, motion } from 'motion-v';
 const props = defineProps<{
     menu: {
         name: string;
@@ -29,20 +31,30 @@ const toggleDropdown = () => {
 const hasActiveChild = computed(() => {
     return props.menu.children?.some((sub) => '');
 });
+const target = useTemplateRef<HTMLElement>('target');
+
+// Pastikan referensi target dilewatkan langsung (VueUse akan menangani .value secara internal)
+onClickOutside(target, () => {
+    if (isOpen.value) {
+        isOpen.value = false;
+    }
+});
 </script>
 
 <template>
-    <div :class="$style.menu_group">
+    <div ref="target" :class="$style.menu_group">
         <component
             :is="menu.children ? 'button' : Link"
-            :href="!menu.children ? '' : undefined"
+            :href="!menu.children ? menu.route : undefined"
             @click="toggleDropdown"
             :class="[
                 $style.menu_link,
                 isOpen || hasActiveChild ? $style.active_parent : '',
             ]"
         >
-            <span :class="$style.icon_wrapper"> </span>
+            <span :class="$style.icon_wrapper">
+                <Icon :icon="menu.icon" />
+            </span>
             <span :class="$style.label">{{ menu.name }}</span>
 
             <div
@@ -63,36 +75,53 @@ const hasActiveChild = computed(() => {
             </div>
         </component>
 
-        <div
-            v-if="menu.children"
-            v-show="isOpen"
-            :class="$style.submenu_container"
-        >
-            <Link
-                v-for="sub in menu.children"
-                :key="sub.route"
-                href=""
-                :class="[$style.submenu_link]"
+        <AnimatePresence>
+            <motion.div
+                v-if="isOpen && menu.children"
+                :initial="{ height: 0, opacity: 0 }"
+                :animate="{ height: 'auto', opacity: 1 }"
+                :exit="{ height: 0, opacity: 0 }"
+                :transition="{
+                    duration: 0.3,
+                    ease: 'circInOut',
+                }"
+                style="overflow: hidden"
             >
-                <span :class="$style.dot"></span>
-                <span>{{ sub.name }}</span>
-            </Link>
-        </div>
+                <div :class="$style.submenu_container">
+                    <Link
+                        v-for="sub in menu.children"
+                        :key="sub.route"
+                        :href="sub.route"
+                        :class="[$style.submenu_link]"
+                    >
+                        <span :class="$style.dot">
+                            <Icon :icon="sub.icon"/>
+                        </span>
+                        <span>{{ sub.name }}</span>
+                    </Link>
+                </div>
+            </motion.div>
+        </AnimatePresence>
     </div>
 </template>
 
 <style module>
+.icon_wrapper {
+    font-size: 1.1rem;
+    margin-right: 0.4rem;
+}
 .menu_group {
     width: 100%;
     margin-bottom: 4px;
 }
 
 .menu_link {
+    font-weight: 500;
     display: flex;
     width: 100%;
     align-items: center;
     padding: 8px 12px;
-    border-radius: 8px;
+    border-radius: 0px;
     color: #57534e; /* stone-600 */
     transition: all 0.2s ease;
     background: transparent;
@@ -103,12 +132,12 @@ const hasActiveChild = computed(() => {
 }
 
 .menu_link:hover {
-    background-color: #ecfdf5; /* emerald-50 */
-    color: #065f46; /* emerald-800 */
+    background-color: #0380da19; /* emerald-50 */
+    color: #0381da; /* emerald-800 */
 }
 
 .active_parent {
-    color: #059669; /* emerald-600 */
+    color: #0381da; /* emerald-600 */
     font-weight: 500;
 }
 
@@ -121,10 +150,12 @@ const hasActiveChild = computed(() => {
     transition: transform 0.3s ease;
     display: flex;
     align-items: center;
+        transform: rotate(-90deg);
+
 }
 
 .rotate {
-    transform: rotate(180deg);
+    transform: rotate(0);
 }
 
 .submenu_container {
@@ -158,9 +189,6 @@ const hasActiveChild = computed(() => {
 }
 
 .dot {
-    width: 4px;
-    height: 4px;
-    background-color: currentColor;
     border-radius: 50%;
     margin-right: 10px;
     opacity: 0.5;

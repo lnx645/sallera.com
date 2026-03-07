@@ -1,57 +1,18 @@
 <script setup lang="ts">
+import { usePage } from '@inertiajs/vue3';
 import NavMenu from './nav-menu.vue';
-let menus = [
-    {
-        name: 'Dashboard',
-        icon: 'home',
-        route: 'dashboard',
-        // Gunakan null atau hapus jika tidak ada children untuk konsistensi pengecekan
-        children: null,
-    },
-    {
-        name: 'Invitnesia',
-        icon: 'palette',
-        route: 'invitnesia.*', // Pattern untuk mendeteksi status 'active' pada grup
-        children: [
-            {
-                name: 'Semua Undangan',
-                route: 'invitnesia.index',
-                icon: 'list',
-            },
-            {
-                name: 'Editor Template',
-                route: 'invitnesia.editor',
-                icon: 'layout',
-            },
-        ],
-    },
-    {
-        name: 'LMS Pasundan',
-        icon: 'education',
-        route: 'lms.*',
-        children: [
-            {
-                name: 'Materi Kuliah',
-                route: 'lms.materials',
-                icon: 'book',
-            },
-            {
-                name: 'Bank Soal',
-                route: 'lms.quiz',
-                icon: 'file-text',
-            },
-        ],
-    },
-];
+import { computed } from 'vue';
+let page = usePage()
+let menus = computed(()=>page.props.menus)
 </script>
 
 <template>
     <nav
         class="sticky top-0 flex h-14 w-full items-center border-b border-none px-2 text-mauve-50"
     >
-        WKKW
+        ALSERA
     </nav>
-    <div class="main-side h-full">
+    <div class="main-side py-2 h-full">
         <NavMenu v-for="value in menus" :menu="value" />
     </div>
 </template>
