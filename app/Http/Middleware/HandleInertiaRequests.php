@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\AppMenuHelpers;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -35,9 +36,11 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $menu = new AppMenuHelpers($request);
         return [
             ...parent::share($request),
             'name' => config('app.name'),
+            'menus' => $menu->render(),
             'auth' => [
                 'user' => $request->user(),
             ],

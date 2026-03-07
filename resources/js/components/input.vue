@@ -1,17 +1,36 @@
 <script setup lang="ts">
-defineProps<{
+import EyeIconHide from '@/icons/eye-icon-hide.vue';
+import EyeIconShow from '@/icons/eye-icon-show.vue';
+import { motion } from 'motion-v';
+import { computed, ref } from 'vue';
+
+let props = defineProps<{
     label: string;
     modelValue: string;
     type?: string;
 }>();
 
 defineEmits(['update:modelValue']);
+let showPw = ref(false);
+let type = computed(() => {
+    if (props.type == 'password') {
+        if (showPw.value) {
+            return 'text';
+        } else {
+            return 'password';
+        }
+    }
+    return props.type;
+});
+function handlePasswordShow() {
+    showPw.value = !showPw.value;
+}
 </script>
 
 <template>
     <div :class="$style.input_container">
         <input
-            :type="type || 'text'"
+            :type="type"
             :value="modelValue"
             @input="
                 $emit(
@@ -24,6 +43,14 @@ defineEmits(['update:modelValue']);
             autocomplete="off"
         />
         <label :class="$style.input_label">{{ label }}</label>
+        <motion.button
+            @click.stop.passive="handlePasswordShow"
+            v-if="props.type == 'password'"
+            class="absolute top-1/2 right-2 -translate-x-1/2 -translate-y-1/2 cursor-pointer text-stone-300"
+        >
+            <EyeIconShow v-if="showPw" />
+            <EyeIconHide v-else />
+        </motion.button>
     </div>
 </template>
 
@@ -39,7 +66,7 @@ defineEmits(['update:modelValue']);
     padding: 22px 16px 10px 16px;
     font-family: inherit;
     font-size: 16px;
-    color: #374151; /* stone-800 */
+    color: rgb(82, 82, 82); /* stone-800 */
     border: 1px solid #d1d5db; /* stone-300 */
     border-radius: 12px;
     background: transparent;

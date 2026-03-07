@@ -1,24 +1,58 @@
+<script setup lang="ts">
+import NavMenu from './nav-menu.vue';
+let menus = [
+    {
+        name: 'Dashboard',
+        icon: 'home',
+        route: 'dashboard',
+        // Gunakan null atau hapus jika tidak ada children untuk konsistensi pengecekan
+        children: null,
+    },
+    {
+        name: 'Invitnesia',
+        icon: 'palette',
+        route: 'invitnesia.*', // Pattern untuk mendeteksi status 'active' pada grup
+        children: [
+            {
+                name: 'Semua Undangan',
+                route: 'invitnesia.index',
+                icon: 'list',
+            },
+            {
+                name: 'Editor Template',
+                route: 'invitnesia.editor',
+                icon: 'layout',
+            },
+        ],
+    },
+    {
+        name: 'LMS Pasundan',
+        icon: 'education',
+        route: 'lms.*',
+        children: [
+            {
+                name: 'Materi Kuliah',
+                route: 'lms.materials',
+                icon: 'book',
+            },
+            {
+                name: 'Bank Soal',
+                route: 'lms.quiz',
+                icon: 'file-text',
+            },
+        ],
+    },
+];
+</script>
+
 <template>
-    <nav class="sticky flex items-center px-2 text-mauve-50 top-0 h-14 w-full border-b border-none">
+    <nav
+        class="sticky top-0 flex h-14 w-full items-center border-b border-none px-2 text-mauve-50"
+    >
         WKKW
     </nav>
     <div class="main-side h-full">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illo,
-        inventore quas, officia esse possimus eius culpa dolorem saepe quisquam
-        tempora voluptatibus dolore repellendus natus architecto illum ad ullam
-        dolorum. Beatae voluptate ea culpa soluta nesciunt adipisci ipsam
-        molestiae. Ex repellat quia amet minima minus ab commodi nobis hic?
-        Neque voluptates iure enim nostrum commodi laborum necessitatibus quae
-        recusandae eos? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Perferendis fuga inventore iste, illum architecto dolores, atque, ipsum
-        veritatis enim assumenda neque natus iure qui molestias. Ipsa quas
-        placeat delectus fuga. Ipsa itaque voluptates tempora architecto modi
-        odio error ipsum et ratione debitis nostrum ipsam rerum, voluptas
-        aperiam? Consectetur optio eos maiores illum nesciunt earum iste beatae
-        vel, et laborum explicabo. Odit iste temporibus tempora. Unde fugit,
-        laborum minus quasi harum asperiores nostrum corrupti at sit ullam,
-        iusto reiciendis consequatur quod corporis id exercitationem magni ut
-        assumenda doloribus voluptatibus quisquam architecto.
+        <NavMenu v-for="value in menus" :menu="value" />
     </div>
 </template>
 <style lang="css" scoped>
