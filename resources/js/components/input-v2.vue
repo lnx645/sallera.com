@@ -71,11 +71,9 @@ const displayValue = computed({
     align-items: center;
     padding-inline: 13px;
     border-radius: 0.5rem;
-    border: 1px solid #e5e6ea;
+    border: 1px solid #afb0af;
     background-color: #ffffff; // Pastikan wrapper punya bg solid
-    box-shadow:
-        0 1.5px 1.5px #00000017,
-        0 1px 3px #0000000a;
+  
     transition: all 0.2s ease-in-out;
     user-select: none;
     svg {

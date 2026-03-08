@@ -95,7 +95,7 @@ onClickOutside(target, () => {
                         :class="[$style.submenu_link]"
                     >
                         <span :class="$style.dot">
-                            <Icon :icon="sub.icon"/>
+                            <Icon :icon="sub.icon" />
                         </span>
                         <span>{{ sub.name }}</span>
                     </Link>
@@ -107,7 +107,7 @@ onClickOutside(target, () => {
 
 <style module>
 .icon_wrapper {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     margin-right: 0.4rem;
 }
 .menu_group {
@@ -116,11 +116,12 @@ onClickOutside(target, () => {
 }
 
 .menu_link {
-    font-weight: 500;
     display: flex;
     width: 100%;
     align-items: center;
-    padding: 8px 12px;
+    font-family: var(--font-nunito);
+    font-weight: 600;
+    padding: 8px 14px;
     border-radius: 0px;
     color: #57534e; /* stone-600 */
     transition: all 0.2s ease;
@@ -132,13 +133,13 @@ onClickOutside(target, () => {
 }
 
 .menu_link:hover {
-    background-color: #0380da19; /* emerald-50 */
-    color: #0381da; /* emerald-800 */
+    background-color: #f0fdf4;
+    color: #059669;
 }
 
 .active_parent {
-    color: #0381da; /* emerald-600 */
-    font-weight: 500;
+    background-color: #f0fdf4;
+    color: #059669;
 }
 
 .label {
@@ -150,8 +151,7 @@ onClickOutside(target, () => {
     transition: transform 0.3s ease;
     display: flex;
     align-items: center;
-        transform: rotate(-90deg);
-
+    transform: rotate(-90deg);
 }
 
 .rotate {
@@ -185,7 +185,6 @@ onClickOutside(target, () => {
 .active_sub {
     background-color: #ecfdf5;
     color: #059669;
-    font-weight: 500;
 }
 
 .dot {

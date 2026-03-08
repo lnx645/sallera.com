@@ -5,6 +5,7 @@
 
 @theme inline {
     --font-sans: 'Fredoka Variable', sans-serif;
+    --font-nunito:'Nunito',sans-serif;
     --color-primary: #088be8;
 }
 

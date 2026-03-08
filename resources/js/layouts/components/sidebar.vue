@@ -2,17 +2,19 @@
 import { usePage } from '@inertiajs/vue3';
 import NavMenu from './nav-menu.vue';
 import { computed } from 'vue';
+import SideOverlayBg from './side-overlay-bg.vue';
 let page = usePage()
 let menus = computed(()=>page.props.menus)
 </script>
 
 <template>
     <nav
-        class="sticky z-50 top-0 flex h-14 w-full items-center border-b border-none px-2 text-mauve-50"
+        class="sticky  top-0 flex h-14 w-full items-center border-b border-none px-2 text-mauve-50"
     >
         ALSERA
     </nav>
-    <div class="main-side py-2 h-full">
+    <div class="main-side relative py-2 h-full">
+        <SideOverlayBg/>
         <NavMenu v-for="value in menus" :menu="value" />
     </div>
 </template>

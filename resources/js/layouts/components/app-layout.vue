@@ -5,12 +5,12 @@ import Sidebar from './sidebar.vue';
 
 <template>
     <div class="flex">
-        <div class="sidebar z-50 relative hidden lg:block">
+        <div class="sidebar z-2 relative hidden lg:block">
             <Sidebar />
         </div>
         <div class="flex-1 shrink">
             <Header />
-            <div class="lg:ml-66">
+            <div class="lg:ml-66 px-3">
                 <slot />
             </div>
         </div>
