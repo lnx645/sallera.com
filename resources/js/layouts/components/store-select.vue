@@ -38,7 +38,7 @@ function onClick(id: string) {
 </script>
 
 <template>
-    <div ref="dropdownRef" class="relative z-50 w-58 lg:w-72">
+    <div ref="dropdownRef" class="relative z-50 w-52 lg:w-72">
         <!-- BUTTON -->
         <motion.button
             tag="button"

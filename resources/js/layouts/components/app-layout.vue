@@ -1,19 +1,25 @@
 <script setup lang="ts">
+import { Teleport } from 'vue';
 import Header from './header.vue';
 import Sidebar from './sidebar.vue';
+import { Icon } from '@iconify/vue';
+import MobileBottomNav from './mobile-bottom-nav.vue';
 </script>
 
 <template>
     <div class="flex">
-        <div class="sidebar z-2 relative hidden lg:block">
+        <div class="sidebar relative z-2 hidden lg:block">
             <Sidebar />
         </div>
         <div class="flex-1 shrink">
             <Header />
-            <div class="lg:ml-66 px-3">
+            <div class="px-3 lg:ml-66">
                 <slot />
             </div>
         </div>
+        <template>
+            <MobileBottomNav/>
+        </template>
     </div>
 </template>
 <style lang="css" scoped>

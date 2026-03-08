@@ -16,26 +16,27 @@ let stores = [
         id: 'string',
     },
 ];
-let selected_id = ref('')
-function onSelect(id : string) {
+let selected_id = ref('');
+function onSelect(id: string) {
     selected_id.value = id;
 }
 </script>
 
 <template>
-    <header class="navbar h-14 w-full sticky top-0">
+    <header class="navbar sticky top-0 h-14 w-full">
         <div class="flex h-full items-center px-3 lg:ml-66 lg:px-0">
             <div class="flex items-center space-x-2 font-semibold text-white">
                 <MenuIcon class="text-white" />
-                
-                <span class="lg:text-lg">Product Management</span>
+                <span class="hidden lg:text-lg">Product Management</span>
             </div>
             <div class="ml-auto lg:mr-4">
-                <StoreSelect
-                    @on-select="onSelect"
-                    :selected_id="selected_id"
-                    :stores="stores"
-                />
+                <div class="hidden lg:block">
+                    <StoreSelect
+                        @on-select="onSelect"
+                        :selected_id="selected_id"
+                        :stores="stores"
+                    />
+                </div>
             </div>
         </div>
     </header>
