@@ -5,7 +5,7 @@ import Sidebar from './sidebar.vue';
 
 <template>
     <div class="flex">
-        <div class="sidebar hidden lg:block">
+        <div class="sidebar z-50 relative hidden lg:block">
             <Sidebar />
         </div>
         <div class="flex-1 shrink">

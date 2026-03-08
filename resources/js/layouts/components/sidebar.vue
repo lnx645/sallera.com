@@ -8,7 +8,7 @@ let menus = computed(()=>page.props.menus)
 
 <template>
     <nav
-        class="sticky top-0 flex h-14 w-full items-center border-b border-none px-2 text-mauve-50"
+        class="sticky z-50 top-0 flex h-14 w-full items-center border-b border-none px-2 text-mauve-50"
     >
         ALSERA
     </nav>

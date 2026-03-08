@@ -7,3 +7,8 @@
     --font-sans: 'Fredoka Variable', sans-serif;
     --color-primary: #088be8;
 }
+
+.input-shadow {
+    box-shadow: 0 1.5px 1.5px #00000017, 0 1px 3px #0000000a;
+}
+

@@ -23,7 +23,7 @@ function onSelect(id : string) {
 </script>
 
 <template>
-    <header class="navbar h-14 w-full">
+    <header class="navbar h-14 w-full sticky top-0">
         <div class="flex h-full items-center px-3 lg:ml-66 lg:px-0">
             <div class="flex items-center space-x-2 font-semibold text-white">
                 <MenuIcon class="text-white" />
