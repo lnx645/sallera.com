@@ -169,8 +169,8 @@ onClickOutside(target, () => {
 .submenu_link {
     display: flex;
     align-items: center;
-    padding: 6px 12px;
-    font-size: 13px;
+    padding: 7px 12px;
+    font-size: 14px;
     color: #78716c; /* stone-500 */
     border-radius: 6px;
     text-decoration: none;

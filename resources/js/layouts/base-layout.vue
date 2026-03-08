@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import 'pretty-checkbox/dist/pretty-checkbox.min.css';
+import { ProgressProvider } from '@bprogress/vue';
+import ProgressBar from '@/components/progress-bar.vue';
 </script>
 
 <template>
-    <slot/>
+    <ProgressProvider>
+        <ProgressBar/>
+        <slot />
+    </ProgressProvider>
 </template>

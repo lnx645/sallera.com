@@ -29,6 +29,7 @@
         "vue-tsc": "^2.2.4"
     },
     "dependencies": {
+        "@bprogress/vue": "^1.1.5",
         "@fontsource-variable/fredoka": "^5.2.10",
         "@fontsource/nunito": "^5.2.7",
         "@inertiajs/vue3": "^2.3.7",

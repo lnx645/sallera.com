@@ -20,13 +20,19 @@ class AppMenuHelpers
         return [
             [
                 'name'     => 'Dashboard',
-                'icon'     => 'solar:home-2-linear', // Menggunakan format Iconify
+                'icon'     => 'solar:home-2-linear',
                 'route'    => 'dashboard',
                 'children' => null,
             ],
             [
-                'name'     => 'Aplikasi POS',
-                'icon'     => 'solar:shop-2-linear',
+                'name'     => 'Pelanggan',
+                'icon'     => 'flowbite:users-group-outline',
+                'route'    => 'dashboard',
+                'children' => null,
+            ],
+            [
+                'name'     => 'Produk & Invertory',
+                'icon'     => 'fluent-mdl2:product',
                 'route'    => 'pos.*',
                 'children' => [
                     [
@@ -47,9 +53,9 @@ class AppMenuHelpers
                 ],
             ],
             [
-                'name'     => 'Invitnesia',
-                'icon'     => 'solar:palette-round-linear',
-                'route'    => 'invitnesia.*',
+                'name'     => 'Pegawai',
+                'icon'     => 'streamline-ultimate:office-employee',
+                'route'    => 'pegawai.*',
                 'children' => [
                     [
                         'name'  => 'Semua Undangan',
@@ -63,9 +69,31 @@ class AppMenuHelpers
                     ],
                 ],
             ],
+             [
+                'name'     => 'Transaksi & Pembayaran',
+                'icon'     => 'hugeicons:invoice-02',
+                'route'    => 'lms.*',
+                'children' => [
+                    [
+                        'name'  => 'Penjualan',
+                        'route' => 'lms.materials',
+                        'icon'  => 'solar:notebook-linear',
+                    ],
+                    [
+                        'name'  => 'Pendapatan/Pengeluaran',
+                        'route' => 'lms.quiz',
+                        'icon'  => 'solar:document-text-linear',
+                    ],
+                    [
+                        'name'  => 'Pembayaran Digital',
+                        'route' => 'lms.quiz',
+                        'icon'  => 'solar:document-text-linear',
+                    ],
+                ],
+            ],
             [
-                'name'     => 'LMS Pasundan',
-                'icon'     => 'solar:magnifer-zoom-in-linear',
+                'name'     => 'Laporan Penjualan',
+                'icon'     => 'tabler:report-search',
                 'route'    => 'lms.*',
                 'children' => [
                     [
@@ -80,6 +108,39 @@ class AppMenuHelpers
                     ],
                 ],
             ],
+
+            [
+                'name'     => 'Pengaturan',
+                'icon'     => 'tabler:settings',
+                'route'    => 'lms.*',
+                'children' => [
+                    [
+                        'name'  => 'Aplikasi',
+                        'route' => 'lms.materials',
+                        'icon'  => 'eos-icons:application-outlined',
+                    ],
+                    [
+                        'name'  => 'Toko',
+                        'route' => 'lms.quiz',
+                        'icon'  => 'boxicons:store'
+                    ],
+                     [
+                        'name'  => 'Poin Of Sales',
+                        'route' => 'lms.quiz',
+                        'icon'  => 'mdi:printer-pos-cog-outline'
+                    ],
+                      [
+                        'name'  => 'Pajak Dan Biaya',
+                        'route' => 'fluent:feed-24-regular',
+                        'icon'  => 'fluent:feed-24-regular'
+                    ],
+                      [
+                        'name'  => 'Payment Gateway',
+                        'route' => 'fluent:feed-24-regular',
+                        'icon'  => 'pajamas:api'
+                    ],
+                ],
+            ]
         ];
     }
 }

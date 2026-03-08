@@ -24,7 +24,7 @@ function onSelect(id : string) {
 
 <template>
     <header class="navbar h-14 w-full">
-        <div class="flex h-full items-center px-3 lg:ml-59 lg:px-0">
+        <div class="flex h-full items-center px-3 lg:ml-66 lg:px-0">
             <div class="flex items-center space-x-2 font-semibold text-white">
                 <MenuIcon class="text-white" />
                 

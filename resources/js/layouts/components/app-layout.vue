@@ -9,18 +9,17 @@ import Sidebar from './sidebar.vue';
             <Sidebar />
         </div>
         <div class="flex-1 shrink">
-            <Header/>
-            <div class="lg:ml-59">
-                <slot/>
+            <Header />
+            <div class="lg:ml-66">
+                <slot />
             </div>
         </div>
     </div>
 </template>
 <style lang="css" scoped>
 @reference "tailwindcss";
-.sidebar{
-    box-shadow: -2px 0 13px -8px rgba(0,0,0,.65);
-    @apply max-h-screen    min-h-screen max-w-50 min-w-56  overflow-y-auto fixed bg-white left-0 top-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ;
+.sidebar {
+    box-shadow: -2px 0 13px -8px rgba(0, 0, 0, 0.65);
+    @apply fixed top-0 left-0 max-h-screen min-h-screen max-w-50 min-w-62 overflow-y-auto bg-white [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
 }
-
 </style>
